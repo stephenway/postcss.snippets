@@ -8,5 +8,5 @@ https://raw.githubusercontent.com/stephenway/postcss.snippets/master/css.snippet
 
 If you cloned, simply use these quick make sub-commands.
 
-`make install` Copies the snippets file to your UltiSnips directory.
-`make uninstall` Removes the snippets file from your Ultinips directoy.
+* `make install` Copies the snippets file to your UltiSnips directory.
+* `make uninstall` Removes the snippets file from your Ultinips directoy.
