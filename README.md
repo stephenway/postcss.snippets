@@ -1,4 +1,8 @@
 # postcss.snippets
+
+<img src="giticon.png" title="postcss.snippets" align="right" width="95"
+height="95">
+
 Vim UltiSnips Snippets for PostCSS
 
 ## Install
