@@ -3,64 +3,6 @@ priority -50
 # PostCSS
 # -------
 
-
-#
-# Future Syntax
-#
-
-# Color Function
-snippet color "color( <hue> <adjuster> )" b
-color(${1:color/hue} ${2:alpha/hue/saturation/lightness/whiteness/blackness/tint/shade/blend/contrast})$0
-endsnippet
-
-# Custom Media
-snippet cmedia "Custom Media" b
-@custom-media --${1:mobile} (${2:width <= 640px});$0
-endsnippet
-
-# Custom Properties
-snippet -- "Custom Property" b
---${1:name}: ${2};$0
-endsnippet
-
-snippet var "var()" b
-var(--${1:name});$0
-endsnippet
-
-# Custom Selectors
-snippet cselector "Custom Selector" b
-@custom-selector :--${1:heading} ${2:h1, h2, h3, h4, h5, h6};$0
-endsnippet
-
-snippet selector "Selector" b
-:--${1:heading}$0
-endsnippet
-
-# Media Minmax
-snippet minmax "Media Minmax" b
-@media screen and (${1:500px}) <= width <= ${2:1200px}) {
-  $0
-}
-endsnippet
-
-# Selector Matches
-snippet matches ":matches()" b
-:matches(${1:.foo}) {
-  $0
-}
-endsnippet
-
-# Mixins
-snippet dmixin "Define Mixin" b
-@define-mixin ${1:name} ${2:$background, $color} {
-  $0
-}
-endsnippet
-
-snippet mixin "Mixin" b
-@mixin ${1:name} ${2:$background, $color};$0
-endsnippet
-
 #
 # Plugin Control
 #
@@ -76,38 +18,101 @@ snippet use "Use" b
 endsnippet
 
 #
-# Language Extensions
+# Future Syntax
 #
 
-#
-# Colors
-#
+snippet color "color( <hue> <adjuster> )" b
+color(${1:color/hue} ${2:alpha/hue/saturation/lightness/whiteness/blackness/tint/shade/blend/contrast})$0
+endsnippet
 
-# Color Gray
 snippet gray "gray()"
 gray(${1:255}, ${2:50%})$0
 endsnippet
 
-# Color HWB
 snippet hwb "hwb()"
 hwb(${1:90}, ${2:0%}, ${3:0%}, ${4:.5})$0
 endsnippet
 
-#
-# Images and Fonts
-#
+snippet cg "background-image: conic-gradient(<colors>);" b
+background-image: conic-gradient(${1});
+endsnippet
 
-#
-# Grids
-#
+snippet cm "Custom Media" b
+@custom-media --${1:mobile} (${2:width <= 640px});$0
+endsnippet
+
+snippet -- "Custom Property" b
+--${1:name}: ${2};$0
+endsnippet
+
+snippet var "var(--custom-property)" b
+var(--${1:name});$0
+endsnippet
+
+snippet :r ":root" b
+:root
+endsnippet
+
+snippet cs "Custom Selector" b
+@custom-selector :--${1:heading} ${2:h1, h2, h3, h4, h5, h6};$0
+endsnippet
+
+snippet sel "Selector" b
+:--${1:heading}$0
+endsnippet
+
+snippet ph "@define-placeholder" b
+@define-placeholder ${1} {
+  $0
+}
+endsnippet
+
+snippet e "@extend" b
+@extend ${1};$0
+endsnippet
+
+snippet :h ":host" b
+:host
+endsnippet
+
+snippet mm "Media Minmax" b
+@media screen and (${1:500px}) <= width <= ${2:1200px}) {
+  $0
+}
+endsnippet
+
+snippet :al ":any-link" b
+:any-link
+endsnippet
+
+snippet :n ":not()" b
+:not($0)
+endsnippet
+
+snippet :m ":matches()" b
+:matches(${1:.foo}) {
+  $0
+}
+endsnippet
+
+snippet ap "@apply --property-map" b
+@apply --${1};$0
+endsnippet
 
 #
 # Optimizations
 #
 
-# Calc
 snippet calc "calc()" b
 calc(${1})$0
+endsnippet
+
+snippet ref "@references" b
+@references ${1};$0
+endsnippet
+
+snippet charset "@charset" b
+@charset ${1:"Shift_JIS"};
 endsnippet
 
 #
@@ -115,11 +120,17 @@ endsnippet
 #
 
 # Easings
-snippet easing "ease" b
+snippet easing "easeIn/Out/InOut" b
 ease${1:In/Out/InOut}${2:Sine/Quad/Cubic/Quart/Quint/Expo/Circ/Back/Elastic/Bounce}$0
 endsnippet
 
-# Size
+snippet :h ":hover, :focus" b
+&:hover,
+&:focus {
+  $0
+}
+endsnippet
+
 snippet size "size" b
 size: ${1:10px};$0
 endsnippet
@@ -161,729 +172,5 @@ endsnippet
 snippet ignore "ignore" b
 /* postcss-bem-linter: ignore */
 $0
-endsnippet
-
-#
-# Others
-#
-
-
-# CSS
-# ---
-
-snippet . "selector { }"
-$1 {
-  $0
-}
-endsnippet
-
-#
-# Pseudo-classes
-#
-
-snippet :ac ":active" b
-:active
-endsnippet
-
-snippet :a ":any" b
-:any
-endsnippet
-
-snippet :ch ":checked" b
-:checked
-endsnippet
-
-snippet :d ":default" b
-:default
-endsnippet
-
-snippet :dir ":dir()" b
-:dir($0)
-endsnippet
-
-snippet :dis ":disabled" b
-:disabled
-endsnippet
-
-snippet :em ":empty" b
-:empty
-endsnippet
-
-snippet :en ":enabled" b
-:enabled
-endsnippet
-
-snippet :f ":first" b
-:first
-endsnippet
-
-snippet :fc ":first-child" b
-:first-child
-endsnippet
-
-snippet :ft ":first-of-type" b
-:first-of-type
-endsnippet
-
-snippet :fs ":fullscreen" b
-:fullscreen
-endsnippet
-
-snippet :fo ":focus" b
-:focus
-endsnippet
-
-snippet :in ":indeterminate" b
-:indeterminate
-endsnippet
-
-snippet :ir ":in-range" b
-:in-range
-endsnippet
-
-snippet :iv ":invalid" b
-:invalid
-endsnippet
-
-snippet :lang ":lang()" b
-:lang($0)
-endsnippet
-
-snippet :lc ":last-child" b
-:last-child
-endsnippet
-
-snippet :lt ":last-of-type" b
-:last-of-type
-endsnippet
-
-snippet :lt ":left" b
-:left
-endsnippet
-
-snippet :ln ":link" b
-:link
-endsnippet
-
-snippet not ":not()" b
-:not($0)
-endsnippet
-
-snippet :nc ":nth-child()" b
-:nth-child($0)
-endsnippet
-
-snippet :nlc ":nth-last-child()" b
-:nth-last-child($0)
-endsnippet
-
-snippet :nlt ":nth-last-of-type()" b
-:nth-last-of-type($0)
-endsnippet
-
-snippet :nt ":nth-of-type()" b
-:nth-of-type($0)
-endsnippet
-
-snippet :oc ":only-child" b
-:only-child
-endsnippet
-
-snippet :ot ":only-of-type" b
-:only-of-type
-endsnippet
-
-snippet :op ":optional" b
-:optional
-endsnippet
-
-snippet :or ":out-of-range" b
-:out-of-range
-endsnippet
-
-snippet :ro ":read-only" b
-:read-only
-endsnippet
-
-snippet :rw ":read-write" b
-:read-write
-endsnippet
-
-snippet :req ":required" b
-:required
-endsnippet
-
-snippet :rt ":right" b
-:right
-endsnippet
-
-snippet :r ":root" b
-:root
-endsnippet
-
-snippet :s ":scope" b
-:scope
-endsnippet
-
-snippet :t ":target" b
-:target
-endsnippet
-
-snippet :va ":valid" b
-:valid
-endsnippet
-
-snippet :vi ":visited" b
-:visited
-endsnippet
-
-#
-# Pseudo-elements
-#
-
-snippet :a "::after" b
-::after
-endsnippet
-
-snippet :b "::before" b
-::before
-endsnippet
-
-snippet :flt "::first-letter" b
-::first-letter
-endsnippet
-
-snippet :fln "::first-line" b
-::first-line
-endsnippet
-
-snippet :sel "::selection" b
-::selection
-endsnippet
-
-snippet :bac "::backdrop" b
-::backdrop
-endsnippet
-
-#
-# At-rules
-#
-
-snippet charset "@charset" b
-@charset "${1:UTF-8}";$0
-endsnippet
-
-snippet import "@import" b
-@import "${1:foo.css}";$0
-endsnippet
-
-snippet ns "@namespace" b
-@namespace ${1:svg} url(${2:http://www.w3.org/2000/svg});$0
-endsnippet
-
-#
-# Nested at-rules
-#
-
-snippet media "@media" b
-@media ${1:screen and (max-width:480px)} {
-  $0
-}
-endsnippet
-
-snippet supports "@supports" b
-@supports (${1:condition}) {
-  $0
-}
-endsnippet
-
-snippet doc "@document" b
-@document url(${1:http://www.w3.org/}),
-          url-prefix(${2:http://www.w3.org/Style/}),
-          domain(${3:mozilla.org}),
-          regexp("${4:https:.*}") {
-  $0
-}
-endsnippet
-
-snippet page "@page" b
-@page ${1:.selectors} {
-  $0
-}
-endsnippet
-
-snippet fontface "@font-face" b
-@font-face {
-  font-family: "${1:Bitstream Vera Serif Bold}";
-  src: url("${2:https://mdn.mozillademos.org/files/2468/VeraSeBd.ttf}");
-}
-endsnippet
-
-snippet keyframes "@keyframes from/to" b
-@keyframes ${1:identifier} {
-  from { ${2:margin-top: 50px;} }
-  to { ${3:margin-top: 100px;} }
-}
-endsnippet
-
-snippet keyframes "@keyframes %" b
-@keyframes ${1:identifier} {
-  0% { ${2:margin-top: 50px;} }
-  50% { ${3:margin-top: 75px;} }
-  100% { ${4:margin-top: 100px;} }
-}
-endsnippet
-
-snippet viewport "@viewport" b
-@viewport {
-  $0
-}
-endsnippet
-
-#
-# Properties
-#
-
-snippet { "properties { } ( } )"
-{
-  /* $1 */
-  $0
-
-endsnippet
-
-snippet p "padding"
-padding: ${1:0};$0
-endsnippet
-
-snippet m "margin"
-margin: ${1:0};$0
-endsnippet
-
-snippet bd "border"
-border: ${1:0};$0
-endsnippet
-
-snippet d "display"
-display: ${1:none};$0
-endsnippet
-
-snippet bg "background"
-background: ${1:none};$0
-endsnippet
-
-snippet ff "font-family"
-font-family: ${1:"Helvetica Neue", Helvetica, Arial, sans-serif};$0
-endsnippet
-
-snippet h "height"
-height: ${1:auto};$0
-endsnippet
-
-snippet w "width"
-width: ${1:auto};$0
-endsnippet
-
-snippet pos "position"
-position: ${1:relative};$0
-endsnippet
-
-snippet tt "text-transform"
-text-transform: ${1:none};$0
-endsnippet
-
-snippet tsh "text-shadow: color-hex x y blur (text)"
-text-shadow: ${1:${2:color} ${3:offset-x} ${4:offset-y} ${5:blur}};$0
-endsnippet
-
-snippet bxsh "box-shadow: color-hex x y blur (text)"
-box-shadow: ${1:${2:offset-x} ${3:offset-y} ${4:blur} ${5:spread} ${6:color}};$0
-endsnippet
-
-
-snippet background "background-attachment: scroll:fixed (background)"
-background-attachment: ${1:scroll/fixed};$0
-endsnippet
-
-snippet background "background-color:  color-hex (background)"
-background-color: #${1:DDD};$0
-endsnippet
-
-snippet background "background-color:  color-name (background)"
-background-color: ${1:red};$0
-endsnippet
-
-snippet background "background-color:  color-rgb (background)"
-background-color: rgb(${1:255},${2:255},${3:255});$0
-endsnippet
-
-snippet background "background-color:  transparent (background)"
-background-color: transparent;$0
-endsnippet
-
-snippet background "background-image:  none (background)"
-background-image: none;$0
-endsnippet
-
-snippet background "background-image:  url (background)"
-background-image: url($1);$0
-endsnippet
-
-snippet background "background-position:  position (background)"
-background-position: ${1:top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos};$0
-endsnippet
-
-snippet background "background-repeat:  r:r-x:r-y:n-r (background)"
-background-repeat: ${1:repeat/repeat-x/repeat-y/no-repeat};$0
-endsnippet
-
-snippet background "background:  color image repeat attachment position (background)"
-background:${6: #${1:DDD}} url($2) ${3:repeat/repeat-x/repeat-y/no-repeat} ${4:scroll/fixed} ${5:top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos};$0
-endsnippet
-
-snippet border "border-bottom-color: size style color (border)"
-border-bottom-color: #${1:999};$0
-endsnippet
-
-snippet border "border-bottom-style: size style color (border)"
-border-bottom-style: ${1:none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset};$0
-endsnippet
-
-snippet border "border-bottom-width: size style color (border)"
-border-bottom-width: ${1:1}px ${2:solid} #${3:999};$0
-endsnippet
-
-snippet border "border-bottom: size style color (border)"
-border-bottom: ${1:1}px ${2:solid} #${3:999};$0
-endsnippet
-
-snippet border "border-color: color (border)"
-border-color: ${1:999};$0
-endsnippet
-
-snippet border "border-left-color: color (border)"
-border-right-color: #${1:999};$0
-endsnippet
-
-snippet border "border-left-style: style (border)"
-border-left-style: ${1:none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset};$0
-endsnippet
-
-snippet border "border-left-width: size (border)"
-border-left-width: ${1:1}px
-endsnippet
-
-snippet border "border-left: size style color (border)"
-border-left: ${1:1}px ${2:solid} #${3:999};$0
-endsnippet
-
-snippet border "border-right-color: color (border)"
-border-right-color: #${1:999};$0
-endsnippet
-
-snippet border "border-right-style: style (border)"
-border-right-style: ${1:none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset};$0
-endsnippet
-
-snippet border "border-right-width: size (border)"
-border-right-width: ${1:1}px
-endsnippet
-
-snippet border "border-right: size style color (border)"
-border-right: ${1:1}px ${2:solid} #${3:999};$0
-endsnippet
-
-snippet border "border-style: style (border)"
-border-style: ${1:none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset};$0
-endsnippet
-
-snippet border "border-top-color: color (border)"
-border-top-color: #${1:999};$0
-endsnippet
-
-snippet border "border-top-style: style (border)"
-border-top-style: ${1:none/hidden/dotted/dashed/solid/double/groove/ridge/inset/outset};$0
-endsnippet
-
-snippet border "border-top-width: size (border)"
-border-top-width: ${1:1}px
-endsnippet
-
-snippet border "border-top: size style color (border)"
-border-top: ${1:1}px ${2:solid} #${3:999};$0
-endsnippet
-
-snippet border "border-width: width (border)"
-border-width: ${1:1px};$0
-endsnippet
-
-snippet border "border:   size style color (border)"
-border: ${1:1px} ${2:solid} #${3:999};$0
-endsnippet
-
-snippet clear "clear: value (clear)"
-clear: ${1:left/right/both/none};$0
-endsnippet
-
-snippet color "color:  color-hex (color)"
-color: #${1:DDD};$0
-endsnippet
-
-snippet color "color:  color-name (color)"
-color: ${1:red};$0
-endsnippet
-
-snippet color "color:  color-rgb (color)"
-color: rgb(${1:255},${2:255},${3:255});$0
-endsnippet
-
-snippet cursor "cursor: type (cursor)"
-cursor: ${1:default/auto/crosshair/pointer/move/*-resize/text/wait/help};$0
-endsnippet
-
-snippet cursor "cursor: url (cursor)"
-cursor: url($1);$0
-endsnippet
-
-snippet direction "direction: ltr|rtl (direction)"
-direction: ${1:ltr|rtl};$0
-endsnippet
-
-snippet display "display: block (display)"
-display: block;$0
-endsnippet
-
-snippet display "display: common-types (display)"
-display: ${1:none/inline/block/list-item/run-in/compact/marker};$0
-endsnippet
-
-snippet display "display: inline (display)"
-display: inline;$0
-endsnippet
-
-snippet display "display: table-types (display)"
-display: ${1:table/inline-table/table-row-group/table-header-group/table-footer-group/table-row/table-column-group/table-column/table-cell/table-caption};$0
-endsnippet
-
-snippet float "float: left:right:none (float)"
-float: ${1:left/right/none};$0
-endsnippet
-
-snippet font "font-family:   family (font)"
-font-family: ${1:Arial, "MS Trebuchet"}, ${2:sans-}serif;$0
-endsnippet
-
-snippet font "font-size: size (font)"
-font-size: ${1:100%};$0
-endsnippet
-
-snippet font "font-style:   normal:italic:oblique (font)"
-font-style: ${1:normal/italic/oblique};$0
-endsnippet
-
-snippet font "font-variant:   normal:small-caps (font)"
-font-variant: ${1:normal/small-caps};$0
-endsnippet
-
-snippet font "font-weight: weight (font)"
-font-weight: ${1:normal/bold};$0
-endsnippet
-
-snippet font "font:   style variant weight size:line-height font -family (font)"
-font: ${1:normal/italic/oblique} ${2:normal/small-caps} ${3:normal/bold} ${4:1em/1.5em} ${5:Arial}, ${6:sans-}serif;$0
-endsnippet
-
-snippet font "font: size font (font)"
-font: ${1:75%} ${2:"Lucida Grande", "Trebuchet MS", Verdana,} ${3:sans-}serif;$0
-endsnippet
-
-snippet letter "letter-spacing:   length-em (letter)"
-letter-spacing: $1em;$0
-endsnippet
-
-snippet letter "letter-spacing:   length-px (letter)"
-letter-spacing: $1px;$0
-endsnippet
-
-snippet list "list-style-image: url (list)"
-list-style-image: url($1);$0
-endsnippet
-
-snippet list "list-style-position: pos (list)"
-list-style-position: ${1:inside/outside};$0
-endsnippet
-
-snippet list "list-style-type: asian (list)"
-list-style-type: ${1:cjk-ideographic/hiragana/katakana/hiragana-iroha/katakana-iroha};$0
-endsnippet
-
-snippet list "list-style-type: marker(list)"
-list-style-type: ${1:none/disc/circle/square};$0
-endsnippet
-
-snippet list "list-style-type: numeric (list)"
-list-style-type: ${1:decimal/decimal-leading-zero/zero};$0
-endsnippet
-
-snippet list "list-style-type: other (list)"
-list-style-type: ${1:hebrew/armenian/georgian};$0
-endsnippet
-
-snippet list "list-style-type: roman-alpha-greek (list)"
-list-style-type: ${1:lower-roman/upper-roman/lower-alpha/upper-alpha/lower-greek/lower-latin/upper-latin};$0
-endsnippet
-
-snippet list "list-style: type position image (list)"
-list-style: ${1:none/disc/circle/square/decimal/zero} ${2:inside/outside} url($3);$0
-endsnippet
-
-snippet margin "margin-bottom: length (margin)"
-margin-bottom: ${1:20px};$0
-endsnippet
-
-snippet margin "margin-left: length (margin)"
-margin-left: ${1:20px};$0
-endsnippet
-
-snippet margin "margin-right: length (margin)"
-margin-right: ${1:20px};$0
-endsnippet
-
-snippet margin "margin-top: length (margin)"
-margin-top: ${1:20px};$0
-endsnippet
-
-snippet margin "margin:   all (margin)"
-margin: ${1:20px};$0
-endsnippet
-
-snippet margin "margin: T R B L (margin)"
-margin: ${1:20px} ${2:0px} ${3:40px} ${4:0px};$0
-endsnippet
-
-snippet margin "margin: V H (margin)"
-margin: ${1:20px} ${2:0px};$0
-endsnippet
-
-snippet marker "marker-offset: auto (marker)"
-marker-offset: auto;$0
-endsnippet
-
-snippet marker "marker-offset: length (marker)"
-marker-offset: ${1:10px};$0
-endsnippet
-
-snippet overflow "overflow: type (overflow)"
-overflow: ${1:visible/hidden/scroll/auto};$0
-endsnippet
-
-snippet padding "padding-bottom: length (margin)"
-padding-bottom: ${1:20px};$0
-endsnippet
-
-snippet padding "padding-left: length (margin)"
-padding-left: ${1:20px};$0
-endsnippet
-
-snippet padding "padding-right: length (margin)"
-padding-right: ${1:20px};$0
-endsnippet
-
-snippet padding "padding-top: length (margin)"
-padding-top: ${1:20px};$0
-endsnippet
-
-snippet padding "padding:   T R B L (padding)"
-padding: ${1:20px} ${2:0px} ${3:40px} ${4:0px};$0
-endsnippet
-
-snippet padding "padding:   V H (padding)"
-padding: ${1:20px} ${2:0px};$0
-endsnippet
-
-snippet padding "padding:   all (padding)"
-padding: ${1:20px};$0
-endsnippet
-
-snippet position "position: type (position)"
-position: ${1:static/relative/absolute/fixed};$0
-endsnippet
-
-snippet scrollbar "scrollbar"
-scrollbar-base-color:       ${1:#CCCCCC};${2:
-scrollbar-arrow-color:      ${3:#000000};
-scrollbar-track-color:      ${4:#999999};
-scrollbar-3dlight-color:    ${5:#EEEEEE};
-scrollbar-highlight-color:  ${6:#FFFFFF};
-scrollbar-face-color:       ${7:#CCCCCC};
-scrollbar-shadow-color:     ${9:#999999};
-scrollbar-darkshadow-color: ${8:#666666};}
-endsnippet
-
-snippet text "text-align: left:center:right (txt)"
-text-align: ${1:left/right/center/justify};$0
-endsnippet
-
-snippet text "text-decoration: none:underline:overline:line-through:blink (text)"
-text-decoration: ${1:none/underline/overline/line-through/blink};$0
-endsnippet
-
-snippet text "text-indent: length (text)"
-text-indent: ${1:10}px;$0
-endsnippet
-
-snippet text "text-transform: capitalize:upper:lower (text)"
-text-transform: ${1:capitalize/uppercase/lowercase};$0
-endsnippet
-
-snippet vertical "vertical-align: type (vertical)"
-vertical-align: ${1:baseline/sub/super/top/text-top/middle/bottom/text-bottom/length/%};$0
-endsnippet
-
-snippet visibility "visibility: type (visibility)"
-visibility: ${1:visible/hidden/collapse};$0
-endsnippet
-
-snippet white "white-space:  normal:pre:nowrap (white)"
-white-space: ${1:normal/pre/nowrap};$0
-endsnippet
-
-snippet will "will-change: transform" b
-will-change: ${1:transform};$0
-endsnippet
-
-snippet word "word-spacing:  length (word)"
-word-spacing: ${1:10px};$0
-endsnippet
-
-snippet z "z-index: index (z)"
-z-index: $1;$0
-endsnippet
-
-#
-# Colors
-#
-
-snippet rgb "color rgb"
-rgb(${1:255}, ${2:255}, ${3:255})$0
-endsnippet
-
-snippet rgba "color rgba"
-rgba(${1:255}, ${2:255}, ${3:255}, ${4:0.5})$0
-endsnippet
-
-snippet hsl "color hsl"
-hsl(${1:360}, ${2:100}%, ${3:100}%)$0
-endsnippet
-
-snippet hsla "color hsla"
-hsla(${1:360}, ${2:100}%, ${3:100}%, ${4:0.5})$0
-endsnippet
-
-#
-# Important
-#
-
-snippet ! "!important CSS (!)"
-!important
 endsnippet
 
