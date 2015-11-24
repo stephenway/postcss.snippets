@@ -3,7 +3,7 @@
 <img src="giticon.png" title="postcss.snippets" align="right" width="95"
 height="95">
 
-Vim UltiSnips Snippets for PostCSS
+PostCSS [UltiSnips](https://github.com/SirVer/ultisnips) Snippets for Vim. Works great if you also have [vim-snippets](https://github.com/honza/vim-snippets) installed to cover most CSS properties.
 
 ## Install
 
